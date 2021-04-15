@@ -1,0 +1,8 @@
+root = true
+
+[*]
+ij_visual_guides = 80, 120
+
+[*.{c,cpp,h,hpp}]
+indent_style = space
+tab_width = 4
