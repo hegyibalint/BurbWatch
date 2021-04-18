@@ -1,24 +1,22 @@
 #include <iostream>
 #include <thread>
+#include <exception>
 
-#include <NVX/Application.hpp>
-#include <NVX/ThreadSafeQueue.hpp>
+#include <NvEglRenderer.h>
+#include <NvDrmRenderer.h>
 
-#include "Common.hpp"
-#include "MotionDetector.hpp"
-#include "FrameSaver.hpp"
+#include "FrameSource.h"
 
 int main(int argc, char **argv) {
-    nvxio::Application &app = nvxio::Application::get();
-    app.init(argc, argv);
+//  auto renderer = NvEglRenderer::createEglRenderer(
+//      "renderer0", 1280, 720, 0, 0
+//  );
+//  if (!renderer) {
+//    throw std::runtime_error{"Cannot create renderer"};
+//  }
 
-    FrameQueue queue{10};
-    MotionDetector motionDetector;
-    FrameSaver frameSaver;
+  FrameSource frameSource;
+  frameSource.start();
 
-    std::thread motionDetectorThread{&MotionDetector::start, std::ref(motionDetector), std::ref(queue)};
-    std::thread frameSaverThread{&FrameSaver::start, std::ref(frameSaver), std::ref(queue)};
-
-    motionDetectorThread.join();
-    frameSaverThread.join();
+//  delete renderer;
 }
