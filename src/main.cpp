@@ -2,9 +2,6 @@
 #include <thread>
 #include <exception>
 
-#include <NvEglRenderer.h>
-#include <NvDrmRenderer.h>
-
 #include "FrameSource.h"
 
 int main(int argc, char **argv) {
